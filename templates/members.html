@@ -1,0 +1,22 @@
+{% extends "base-structure.html"%}
+{% block title %}Members{% endblock %}
+{% block head%}
+  {{ super() }}
+{% endblock%}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"></i> Members</h1>
+    <ul>
+        {% for member in members %}
+          <li>{{member}}</li>
+        {% endfor%}
+    </ul>
+  </div>
+
+
+
+
+
+    {% endblock%}

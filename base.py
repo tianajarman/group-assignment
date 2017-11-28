@@ -13,6 +13,15 @@ db = SQLAlchemy(app)
 def home():
     return render_template('index.html')
 
+@app.route('/members')
+def get_all_members():
+    members = [
+        'Tiana Jarman',
+        'Riley Spehler',
+        'Danielle Dominguez'
+    ]
+    return render_template('members.html', members=members)
+
 
 if __name__ == '__main__':
     app.run()
