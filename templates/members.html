@@ -1,18 +1,11 @@
 {% extends "base-structure.html"%}
 {% block title %}Members{% endblock %}
-{% block head%}
-  {{ super() }}
-  <style>
-    body {
-      padding-top: 54px;
-    }
-  </style>
-{% endblock%}
+
 {% block page_content%}
 
   <!-- Page Content -->
   <div class="container">
-    <h1 class="mt-5"><i class="fa fa-user-o" aria-hidden="true"></i> Members </h1>
+    <h1 class="mt-5"><i class="fa fa-users" aria-hidden="true"></i> Members </h1>
     <ul>
         {% for member in members %}
           <li>{{member}}</li>

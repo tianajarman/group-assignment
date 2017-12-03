@@ -1,0 +1,38 @@
+{% extends "base-structure.html" %}
+
+{% block title %}
+All Directors
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+   <h1 class="mt-5"><i class="fa fa-user-o" aria-hidden="true"></i> Directors </h1>
+
+   {% if directors %}
+     <table class="table">
+       <thead>
+         <tr>
+           <th>Director ID</th>
+           <th>Name</th>
+           <th>Years Active</th>
+         </tr>
+       </thead>
+       <tbody>
+     {% for director in directors %}
+     <tr>
+           <th scope="row">{{director.id}}</th>
+           <td>{{director.name}}</td>
+           <td>{{director.years_active}}</td>
+           <td> <!-- add button goes here --> </td>
+           <td> <!-- edit button goes here --> </td>
+           <td> <!-- delete button goes here --> </td>
+     </tr>
+      {% endfor %}
+    </tbody>
+   </table>
+   {% else %}
+   <h3>There are no directors in the directory yet.</h3>
+   {% endif %}
+
+  </div>
+{% endblock %}

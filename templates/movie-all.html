@@ -1,0 +1,43 @@
+{% extends "base-structure.html" %}
+
+{% block title %}
+All Movies
+{% endblock %}
+
+{% block page_content %}
+
+<div class="container">
+   <h1 class="mt-5"><i class="fa fa-video-camera" aria-hidden="true"></i> Movies </h1>
+
+   {% if movies %}
+     <table class="table">
+       <thead>
+         <tr>
+           <th>Movie ID</th>
+           <th>Title</th>
+           <th>Genre</th>
+           <th>Year</th>
+           <th>Director</th>
+         </tr>
+       </thead>
+       <tbody>
+     {% for movie in movies %}
+     <tr>
+           <th scope="row">{{movie.id}}</th>
+           <td>{{movie.title}}</td>
+           <td>{{movie.genre}}</td>
+           <td>{{movie.year}}</td>
+           <td>{{movie.director.name}}</td>
+           <td> <!-- add button goes here --> </td>
+           <td> <!-- edit button goes here --> </td>
+           <td> <!-- delete button goes here --> </td>
+     </tr>
+      {% endfor %}
+    </tbody>
+   </table>
+   {% else %}
+   <h3>There are no movies in the directory yet.</h3>
+   {% endif %}
+
+  </div>
+{% endblock %}
