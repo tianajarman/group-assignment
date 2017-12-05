@@ -45,7 +45,7 @@ def show_all_directors():
     directors = Director.query.all()
     return render_template('director-all.html', directors=directors)
 
-## add route for /directors/add Here 
+## add route for /directors/add Here
 
 ## add route for /directors/edit Here
 
@@ -65,14 +65,11 @@ def show_all_movies():
 
 
 @app.route('/movies') ## populate the arrays with whatever real data is put in the manage.py database
-def movies():
+def get_all_movies():
     movies = [
-        ['Movie1', 'Genre1',
-            'Description1'],
-        ['Movie2', 'Genre2',
-            'Description2'],
-        ['Movie3', 'Genre3',
-            'Description3']
+        ['Movie1', 'Genre1','Description1'],
+        ['Movie2', 'Genre2','Description2'],
+        ['Movie3', 'Genre3','Description3']
     ]
     return render_template('movies.html', movies=movies)
 
