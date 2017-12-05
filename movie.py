@@ -64,12 +64,12 @@ def show_all_movies():
 ## add route for /movies/delete here
 
 
-@app.route('/movies') ## populate the arrays with whatever real data is put in the manage.py database
+@app.route('/movies')
 def get_all_movies():
     movies = [
-        ['Movie1', 'Genre1','Description1'],
-        ['Movie2', 'Genre2','Description2'],
-        ['Movie3', 'Genre3','Description3']
+        ['HocusPocus', 'Comedy', "After moving to Salem, Mass., teenager Max Dennison (Omri Katz) explores an abandoned house with his sister Dani (Thora Birch) and their new friend, Allison (Vinessa Shaw). After dismissing a story Allison tells as superstitious, Max accidentally frees a coven of evil witches (Bette Midler, Sarah Jessica Parker, Kathy Najimy) who used to live in the house. Now, with the help of a magical cat, the kids must steal the witches book of spells to stop them from becoming immortal."],
+        ['HorribleBossess', 'Comedy', "Nick (Jason Bateman), Dale (Charlie Day) and Kurt (Jason Sudeikis) are workers who would like nothing better than to grind their oppressive employers into the dirt. Quitting their jobs is not an option, so -- fueled by alcohol and dubious advice from a criminal (Jamie Foxx) -- the men devise a complex and seemingly foolproof plan to permanently rid themselves of their terrible bosses. The problem is, any plan is only as clever as the brains behind it."],
+        ['Swimfan', 'Thriller', "Ben Cronin (Jesse Bradford) has it all: the admiration of his many friends, a terrific girlfriend, and he's on the fast-track to an athletic scholarship. Ben's rock-solid, promising future and romance are turned upside-down with the arrival of Madison Bell (Erika Christensen). Madison, the new girl in town, quickly sets her sights on the impressionable Ben. While their first few meetings are innocent enough, the obsessive and seductive Madison wants more ... much more."]
     ]
     return render_template('movies.html', movies=movies)
 
