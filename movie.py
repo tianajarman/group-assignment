@@ -45,10 +45,29 @@ def show_all_directors():
     directors = Director.query.all()
     return render_template('director-all.html', directors=directors)
 
-## add route for /directors/add Here
+@app.route('/directors/add')
+def add_directors():
+    if request.method == 'GET':
+        return render_template('directors-add.html')
+    if request.method == 'POST':
+        name = request.form['name']
+        years_active = request.form['years_active']
 
-## add route for /directors/edit Here
+        director = Director(name=name, years_active=years_active)
+        db.session.add(director)
+        db.session.commit()
+        return redirect(url_for('show_all_directors'))
 
+@app.route('/directors/edit/<int:id>', methods=['GET', 'POST'])
+def edit_director(id):
+    director = Director.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('directors-edit.html', director=director)
+    if request.method == 'POST':
+        director.name = request.form['name']
+        director.years_active = request.form['years_active']
+    db.session.commit
+    return redirect(url_for('show_all_directors'))
 ## add route for /directors/delete Here
 
 
@@ -57,9 +76,21 @@ def show_all_movies():
     movies = Movie.query.all()
     return render_template('movie-all.html', movies=movies)
 
-## add route for /movies/add Here
+@app.route('/movies/add')
+def add_movies():
+    if request.method == 'GET':
+        return render_template('movies-add.html')
+    if request.method == 'POST':
+        title = request.form['title']
+        genre = request.form['genre']
+        year = request.form['year']
+        director_name = request.form['director_name']
 
-## add route for /movies/edit Here
+        director = Director.query.filter_by(name=director_name).first()
+        db.session.add(movie)
+        db.session.commit()
+        return redirect(url_for('show_all_movies'))
+
 
 ## add route for /movies/delete here
 

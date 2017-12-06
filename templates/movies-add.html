@@ -8,7 +8,21 @@ Add Movie
 <div class="container">
    <h1 class="mt-5"><i class="fa fa-play" aria-hidden="true"></i> Add Movie </h1>
 
-    <!-- form content goes here -->
+   <form action="/movies/add" method="post">
+     <div class="form-group">
+       <label>Tile</label>
+       <input type="text" name="title" placeholder="Movie Title" required="true">
+     </div>
+     <div class="form-group">
+       <label>Genre</label>
+       <input type="text" name="genre" placeholder="Genre" required="true">
+     </div>
+     <div class="form-group">
+       <label>Year</label>
+       <input type="text" name="year" placeholder="Year of Release" required="true">
+     </div>
+     <button type="submit" class="btn btn-primary">Add Director</button>
+   </form>
 
 
 
