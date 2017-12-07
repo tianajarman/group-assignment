@@ -93,9 +93,11 @@ def show_all_movies():
 
 @app.route('/movie-directory/add', methods=['GET', 'POST'])
 def add_movies():
+    directors = Director.query.all()
     if request.method == 'GET':
-        return render_template('movies-add.html')
+        return render_template('movies-add.html', directors=directors)
     if request.method == 'POST':
+        # get data from the form
         title = request.form['title']
         genre = request.form['genre']
         year = request.form['year']
@@ -104,7 +106,8 @@ def add_movies():
 
         director = Director.query.filter_by(name=director_name).first()
 
-        movie = Movie(title=title, genre=genre, year=year, description=description)
+        # insert the data into the database
+        movie = Movie(title=title, genre=genre, year=year, description=description, director=director)
         db.session.add(movie)
         db.session.commit()
         return redirect(url_for('show_all_movies'))

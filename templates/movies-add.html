@@ -7,30 +7,52 @@ Add Movie
 {% block page_content %}
 <div class="container">
    <h1 class="mt-5"><i class="fa fa-play" aria-hidden="true"></i> Add Movie:</h1>
+
   <form action="/movie-directory/add" method="post">
+
     <div class="form-group">
       <label>Title</label>
       <input class="form-control" type="text" name="title" placeholder="Movie Title" required="true">
     </div>
+
     <div class="form-group">
       <label>Genre</label>
       <textarea class="form-control" name="genre" placeholder="Genre" required="true"></textarea>
     </div>
+
     <div class="form-group">
       <label>Year</label>
-      <input class="form-control" type="text" name="year" placeholder="Year of Release" required="true">
+      <select class="form-control" name="year">
+        {% for i in range(1900, 2025) %}
+          {% if i == 2017 %}
+            <option selected="selected">{{i}}</option>
+          {% else %}
+            <option>{{i}}</option>
+          {% endif %}
+          {% endfor %}
+      </select>
     </div>
+
     <div class="form-group">
       <label>Description</label>
       <input class="form-control" type="text" name="description" placeholder="Movie Description" required="true">
     </div>
+
     <div class="form-group">
-      <label>Director</label>
-      <input class="form-control" type="text" name="director_name" placeholder="Director Name" required="true">
-    </div>
+       <label>Director</label>
+       <select class="form-control" name="director_name">
+         {% for director in directors %}
+             <option>{{director.name}}</option>
+         {% endfor %}
+       </select>
+     </div>
+
+     <div class="form-group">
+       Director not in the list? <a href="/directors/add" class="btn btn-success" role="button" aria-disabled="true">Add Director</a>
+     </div>
+
+
     <button type="submit" class="btn btn-primary">Add Movie</button>
   </form>
- </div>
-
  </div>
 {% endblock %}
