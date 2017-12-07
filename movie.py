@@ -137,9 +137,9 @@ def delete_movie(id):
 @app.route('/movies')
 def get_all_movies():
     movies = [
-        ['Hocus Pocus', 'Comedy', "After three centuries, three witch sisters are resurrected in Salem, Massachusetts on Halloween night, and it is up to two teenagers, a young girl, and an immortal cat to put an end to their reign of terror once and for all."],
-        ['Horrible Bosses', 'Comedy', "Three friends conspire to murder their awful bosses when they realize they are standing in the way of their happiness."],
-        ['Swimfan', 'Thriller', "A high school senior with a promising swimming career has a one-night stand with consequences."]
+        ['1', 'Hocus Pocus', 'Comedy', 'After three centuries, three witch sisters are resurrected in Salem, Massachusetts on Halloween night, and it is up to two teenagers, a young girl, and an immortal cat to put an end to their reign of terror once and for all.'],
+        ['2', 'Horrible Bosses', 'Comedy', 'Three friends conspire to murder their awful bosses when they realize they are standing in the way of their happiness.'],
+        ['3', 'Swimfan', 'Thriller', "A high school senior with a promising swimming career has a one-night stand with consequences."]
     ]
     return render_template('movies.html', movies=movies)
 

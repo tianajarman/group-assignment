@@ -7,8 +7,8 @@
    <h1 class="mt-5"><i class="fa fa-film" aria-hidden="true"></i> Movie List</h1>
    <ul>
      {% for movie in movies %}
-       <li><a href="#{{movie[1]}}" data-toggle="modal" data-target="#{{movie[1]}}">{{movie[0]}}</a></li>
-       <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="bannerformmodal" aria-hidden="true" id="{{movie[1]}}">
+       <li><a href="#{{movie[0]}}" data-toggle="modal" data-target="#{{movie[0]}}">{{movie[1]}}</a></li>
+       <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="bannerformmodal" aria-hidden="true" id="{{movie[0]}}">
        <div class="modal-dialog modal-sm">
                <div class="modal-content">
                  <div class="modal-content">
@@ -17,7 +17,7 @@
                        <h4 class="modal-title" id="myModalLabel">Synopsis</h4>
                        </div>
                        <div class="modal-body">
-                         {{movie[2]}}
+                         {{movie[3]}}
                      </div>
                    </div>
 
