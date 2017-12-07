@@ -99,6 +99,7 @@ def add_movies():
         title = request.form['title']
         genre = request.form['genre']
         year = request.form['year']
+        description = request.form['description']
         director_name = request.form['director_name']
 
         director = Director.query.filter_by(name=director_name).first()
