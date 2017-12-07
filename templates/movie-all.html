@@ -18,6 +18,7 @@ All Movies
            <th>Title</th>
            <th>Genre</th>
            <th>Year</th>
+           <th>Description</th>
            <th>Director</th>
          </tr>
        </thead>
@@ -28,9 +29,10 @@ All Movies
            <td>{{movie.title}}</td>
            <td>{{movie.genre}}</td>
            <td>{{movie.year}}</td>
+           <td>{{movie.description}}</td>
            <td>{{movie.director.name}}</td>
-           <td><a href="/movie-directory/edit/{{movie.id}}" class="btn btn-success" role="button" aria-disabled="true">Edit</a>
-           <a href="/movie-directory/delete/{{movie.id}}" class="btn btn-danger" role="button" aria-disabled="true">Delete</a></td>
+           <td><a href="/movie-directory/edit/{{movie.id}}" class="btn btn-success" role="button" aria-disabled="true">Edit</a></td>
+           <td><a href="/movie-directory/delete/{{movie.id}}" class="btn btn-danger" role="button" aria-disabled="true">Delete</a></td>
      </tr>
       {% endfor %}
     </tbody>
