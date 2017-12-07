@@ -104,7 +104,7 @@ def add_movies():
 
         director = Director.query.filter_by(name=director_name).first()
 
-        movie = Movie(title=title, genre=genre, year=year)
+        movie = Movie(title=title, genre=genre, year=year, description=description)
         db.session.add(movie)
         db.session.commit()
         return redirect(url_for('show_all_movies'))
