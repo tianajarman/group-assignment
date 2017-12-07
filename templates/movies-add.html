@@ -6,28 +6,27 @@ Add Movie
 
 {% block page_content %}
 <div class="container">
-   <h1 class="mt-5"><i class="fa fa-play" aria-hidden="true"></i> Add Movie </h1>
-
-   <form action="/movies/add" method="post">
-     <div class="form-group">
-       <label>Tile</label>
-       <input type="text" name="title" placeholder="Movie Title" required="true">
-     </div>
-     <div class="form-group">
-       <label>Genre</label>
-       <input type="text" name="genre" placeholder="Genre" required="true">
-     </div>
-     <div class="form-group">
-       <label>Year</label>
-       <input type="text" name="year" placeholder="Year of Release" required="true">
-     </div>
-     <button type="submit" class="btn btn-primary">Add Director</button>
-   </form>
-
-
-
-
-
+   <h1 class="mt-5"><i class="fa fa-play" aria-hidden="true"></i> Add Movie:</h1>
+  <form action="/movie-directory/add" method="post">
+    <div class="form-group">
+      <label>Title</label>
+      <input class="form-control" type="text" name="title" placeholder="Movie Title" required="true">
+    </div>
+    <div class="form-group">
+      <label>Genre</label>
+      <textarea class="form-control" name="genre" placeholder="Genre" required="true"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Year</label>
+      <input class="form-control" type="text" name="year" placeholder="Year of Release" required="true">
+    </div>
+    <div class="form-group">
+      <label>Director</label>
+      <input class="form-control" type="text" name="director_name" placeholder="Director Name" required="true">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Movie</button>
+  </form>
+ </div>
 
  </div>
 {% endblock %}

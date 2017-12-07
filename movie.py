@@ -14,7 +14,7 @@ class Director(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
     years_active = db.Column(db.Text)
-    courses = db.relationship('Movie', backref='director', cascade="delete")
+    movies = db.relationship('Movie', backref='director', cascade="delete")
 
 
 class Movie(db.Model):
@@ -29,6 +29,7 @@ class Movie(db.Model):
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/members')
 def get_all_members():
@@ -45,7 +46,8 @@ def show_all_directors():
     directors = Director.query.all()
     return render_template('director-all.html', directors=directors)
 
-@app.route('/directors/add')
+
+@app.route('/directors/add', methods=['GET', 'POST'])
 def add_directors():
     if request.method == 'GET':
         return render_template('directors-add.html')
@@ -58,17 +60,28 @@ def add_directors():
         db.session.commit()
         return redirect(url_for('show_all_directors'))
 
+
 @app.route('/directors/edit/<int:id>', methods=['GET', 'POST'])
-def edit_director(id):
+def edit_directors(id):
     director = Director.query.filter_by(id=id).first()
     if request.method == 'GET':
         return render_template('directors-edit.html', director=director)
     if request.method == 'POST':
         director.name = request.form['name']
         director.years_active = request.form['years_active']
-    db.session.commit
-    return redirect(url_for('show_all_directors'))
-## add route for /directors/delete Here
+        db.session.commit()
+        return redirect(url_for('show_all_directors'))
+
+
+@app.route('/directors/delete/<int:id>', methods=['GET', 'POST'])
+def delete_director(id):
+    director = Director.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('directors-delete.html', director=director)
+    if request.method == 'POST':
+        db.session.delete(director)
+        db.session.commit()
+        return redirect(url_for('show_all_directors'))
 
 
 @app.route('/movie-directory')
@@ -76,7 +89,8 @@ def show_all_movies():
     movies = Movie.query.all()
     return render_template('movie-all.html', movies=movies)
 
-@app.route('/movies/add')
+
+@app.route('/movie-directory/add', methods=['GET', 'POST'])
 def add_movies():
     if request.method == 'GET':
         return render_template('movies-add.html')
@@ -87,12 +101,35 @@ def add_movies():
         director_name = request.form['director_name']
 
         director = Director.query.filter_by(name=director_name).first()
+
+        movie = Movie(title=title, genre=genre, year=year)
         db.session.add(movie)
         db.session.commit()
         return redirect(url_for('show_all_movies'))
 
 
-## add route for /movies/delete here
+@app.route('/movie-directory/edit/<int:id>', methods=['GET', 'POST'])
+def edit_movies(id):
+    movie = Movie.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('movies-edit.html', movie=movie)
+    if request.method == 'POST':
+        movie.title = request.form['title']
+        movie.genre = request.form['genre']
+        movie.year = request.form['year']
+        db.session.commit()
+        return redirect(url_for('show_all_movies'))
+
+
+@app.route('/movie-directory/delete/<int:id>', methods=['GET', 'POST'])
+def delete_movie(id):
+    movie = Movie.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('movies-delete.html', movie=movie)
+    if request.method == 'POST':
+        db.session.delete(movie)
+        db.session.commit()
+        return redirect(url_for('show_all_movies'))
 
 
 @app.route('/movies')

@@ -9,7 +9,7 @@ All Movies
 <div class="container">
    <h1 class="mt-5"><i class="fa fa-video-camera" aria-hidden="true"></i> Movies </h1>
    <div class="row bottom-margin">
-     <a href="/movies/add" class="btn btn-primary" role="button" aria-disabeled="true">Add Movie</a>
+     <a href="/movie-directory/add" class="btn btn-primary" role="button" aria-disabeled="true">Add Movie</a>
    {% if movies %}
      <table class="table">
        <thead>
@@ -29,8 +29,8 @@ All Movies
            <td>{{movie.genre}}</td>
            <td>{{movie.year}}</td>
            <td>{{movie.director.name}}</td>
-           <td> <!-- edit button goes here --> </td>
-           <td> <!-- delete button goes here --> </td>
+           <td><a href="/movie-directory/edit/{{movie.id}}" class="btn btn-success" role="button" aria-disabled="true">Edit</a>
+           <a href="/movie-directory/delete/{{movie.id}}" class="btn btn-danger" role="button" aria-disabled="true">Delete</a></td>
      </tr>
       {% endfor %}
     </tbody>

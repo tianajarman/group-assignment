@@ -4,21 +4,23 @@
 Add Director
 {% endblock %}
 
+{% block head%}
+  {{super()}}
+{% endblock %}
+
 {% block page_content %}
 <div class="container">
-   <h1 class="mt-5"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Director </h1>
-
-    <form action="/directors/add" method="post">
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" name="name" placeholder="Name of the Director" required="true">
-      </div>
-      <div class="form-group">
-        <label>Years Active</label>
-        <input type="text" name="years_active" placeholder="Years Active" required="true">
-      </div>
-      <button type="submit" class="btn btn-primary">Add Director</button>
-    </form>
-
+   <h1 class="mt-5"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Directors:</h1>
+   <form action="/directors/add" method="post">
+     <div class="form-group">
+     <label>Name</label>
+     <input class="form-control" type="text" name="name" placeholder="Name of Director" required="true">
+  </div>
+  <div class="form-group">
+    <label>Years Active</label>
+    <textarea class="form-control" name="years_active" placeholder="Years Active" required="true"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Director</button>
+   </form>
  </div>
 {% endblock %}
