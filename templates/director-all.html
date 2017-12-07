@@ -13,7 +13,6 @@ All Directors
      <table class="table">
        <thead>
          <tr>
-           <th>Director ID</th>
            <th>Name</th>
            <th>Years Active</th>
          </tr>
@@ -21,8 +20,7 @@ All Directors
        <tbody>
      {% for director in directors %}
      <tr>
-           <th scope="row">{{director.id}}</th>
-           <td>{{director.name}}</td>
+           <th scope="row">{{director.name}}</th>
            <td>{{director.years_active}}</td>
            <td><a href="/directors/edit/{{director.id}}" class="btn btn-success" role="button" aria-disabled="true">Edit</a>
            <a href="/directors/delete/{{director.id}}" class="btn btn-danger" role="button" aria-disabled="true">Delete</a></td>

@@ -14,7 +14,6 @@ All Movies
      <table class="table">
        <thead>
          <tr>
-           <th>Movie ID</th>
            <th>Title</th>
            <th>Genre</th>
            <th>Year</th>
@@ -25,8 +24,7 @@ All Movies
        <tbody>
      {% for movie in movies %}
      <tr>
-           <th scope="row">{{movie.id}}</th>
-           <td>{{movie.title}}</td>
+           <th scope="row">{{movie.title}}</th>
            <td>{{movie.genre}}</td>
            <td>{{movie.year}}</td>
            <td>{{movie.description}}</td>
@@ -36,7 +34,7 @@ All Movies
      </tr>
       {% endfor %}
     </tbody>
-   </table>
+   </table
    {% else %}
    <h3>There are no movies in the directory yet.</h3>
    {% endif %}
