@@ -10,12 +10,18 @@ Director ID |  Name | Years Active
 1 | Kenny Ortega | 1980-Present
 2 | Seth Gordon | 2005-Present
 3 | John Polson | 1999-2011
+4 | King Vidor | 1913-1980
+5 | Griffin Dunne | 1975-Present
+6 | John Carpenter | 1969-Present
 
 Movie ID | Title | Genre | Year | Description| Director
 ---------|-------|-------|------|------------|---------
 1 | Hocus Pocus | Comedy | 1993 | After three centuries, three witch sisters...| Kenny Ortega
 2 | Horrible Bosses | Comedy | 2011 | Three friends conspire to murder... | Seth Gordon
 3 | Swimfan | Thriller | 2002 | A high school senior with a promising... | John Polson
+4 | The Wizard of Oz | Science Fiction | 1939 | An innocent farm girl whisked out of her mundane... | King Vidor
+5 | Practical Magic | Fantasy | 1998 | Sally and Gillian Owens, born into a magical family... | Griffin Dunne
+6 | Halloween | Thriller | 1978 | Fifteen years after murdering his sister on Halloween night... | John Carpenter
 
 ### Instructions
 
