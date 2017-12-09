@@ -1,3 +1,7 @@
 body {
   padding-top: 54px;
 }
+
+body > div > h3#navtitle {
+  color: red;
+}

@@ -1,7 +1,9 @@
 import os
-from flask import Flask, session, render_template, request, redirect, url_for
+from flask import Flask, session, render_template, request, flash, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'ajax needed a secret key'
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -61,6 +63,22 @@ def add_directors():
         db.session.commit()
         return redirect(url_for('show_all_directors'))
 
+# ajax add directors
+
+
+@app.route('/ajax/directors/add', methods=['POST'])
+def add_ajax_directors():
+    # get data from the form
+    name = request.form['name']
+    years_active = request.form['years_active']
+
+    # insert the data into the database
+    director = Director(name=name, years_active=years_active)
+    db.session.add(director)
+    db.session.commit()
+    flash('Director Inserted', 'success')
+    return jsonify({"id": str(director.id), "name": director.name})
+
 
 @app.route('/directors/edit/<int:id>', methods=['GET', 'POST'])
 def edit_directors(id):
@@ -83,6 +101,16 @@ def delete_director(id):
         db.session.delete(director)
         db.session.commit()
         return redirect(url_for('show_all_directors'))
+
+# ajax delete directors
+
+
+@app.route('/ajax/directors/<int:id>', methods=['DELETE'])
+def delete_ajax_director(id):
+    director = Director.query.get_or_404(id)
+    db.session.delete(director)
+    db.session.commit()
+    return jsonify({"id": str(director.id), "name": director.name})
 
 
 @app.route('/movie-directory')
@@ -111,6 +139,37 @@ def add_movies():
         db.session.add(movie)
         db.session.commit()
         return redirect(url_for('show_all_movies'))
+
+# movie directory add Ajax
+
+
+@app.route('/ajax/movie-directory/add', methods=['POST'])
+def add_ajax_movies():
+    # get data from the form
+    title = request.form['title']
+    genre = request.form['genre']
+    year = request.form['year']
+    description = request.form['description']
+    director_name = request.form['director_name']
+
+    director = Director.query.filter_by(name=director_name).first()
+
+    movie = Movie(title=title, genre=genre, year=year, description=description, director=director)
+    db.session.add(movie)
+    db.session.commit()
+    flash('Movie Inserted', 'success')
+    return jsonify({"id": str(movie.id), "name": movie.title})
+
+
+# movie directory delete Ajax
+
+
+@app.route('/ajax/movie-directory/<int:id>', methods=['DELETE'])
+def delete_ajax_movie(id):
+    movie = Movie.query.get_or_404(id)
+    db.session.delete(movie)
+    db.session.commit()
+    return jsonify({"id": str(movie.id), "name": movie.title})
 
 
 @app.route('/movie-directory/edit/<int:id>', methods=['GET', 'POST'])

@@ -8,7 +8,7 @@ Add Movie
 <div class="container">
    <h1 class="mt-5"><i class="fa fa-play" aria-hidden="true"></i> Add Movie:</h1>
 
-  <form action="/movie-directory/add" method="post">
+  <form action="/movie-directory/add" method="post" id="add-movie-form">
 
     <div class="form-group">
       <label>Title</label>
@@ -52,7 +52,37 @@ Add Movie
      </div>
 
 
-    <button type="submit" class="btn btn-primary">Add Movie</button>
+    <button type="submit" class="btn btn-success" id="insert-ajax-btn">Add Movie</button>
+
   </form>
  </div>
 {% endblock %}
+
+{% block scripts%}
+{{super()}}
+<script>
+  $(document).ready(function() {
+    $("#insert-ajax-btn").click(function(event) {
+      event.preventDefault();
+      $.ajax({
+          type: "POST",
+          url: "/ajax/movie-directory/add",
+          data: $("#add-movie-form").serialize(),
+          success: function(response) {
+            window.location.replace("/movie-directory");
+          }
+        })
+        .fail(function(error) {
+
+          swal({
+            title: "Oops...",
+            text: "Initialization failed",
+            type: "error",
+            timer: 2000,
+            showConfirmButton: false
+          });
+        });
+    });
+  });
+</script>
+{% endblock%}

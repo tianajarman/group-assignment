@@ -30,7 +30,8 @@ All Movies
            <td>{{movie.description}}</td>
            <td>{{movie.director.name}}</td>
            <td><a href="/movie-directory/edit/{{movie.id}}" class="btn btn-success" role="button" aria-disabled="true">Edit</a></td>
-           <td><a href="/movie-directory/delete/{{movie.id}}" class="btn btn-danger" role="button" aria-disabled="true">Delete</a></td>
+          <td><button class="btn btn-warning delete_ajax_btn" role="button" data-movie-id="{{movie.id}}">Delete</button></td>
+
      </tr>
       {% endfor %}
     </tbody>
@@ -42,3 +43,56 @@ All Movies
  </div>
 </div>
 {% endblock %}
+
+
+{% block scripts%}
+{{super()}}
+<script>
+  $(document).ready(function() {
+    $(".delete_ajax_btn").click(function(event) {
+      var movie_id = $(this).data("movie-id");
+
+      var row = $(this).parent().parent();
+      swal({
+          title: "Are you sure?",
+          type: "warning",
+          html: true,
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+        },
+        function(isConfirm) {
+          if (isConfirm) {
+            $.ajax({
+                type: "DELETE",
+                url: "/ajax/movie-directory/" + movie_id,
+                success: function(response) {
+                  console.log(response);
+                  row.remove();
+                  swal({
+                    title: "Deleted!",
+                    text: response.name + " has been deleted.",
+                    type: "success",
+                    timer: 2500,
+                    showConfirmButton: false
+                  });
+                }
+              })
+              .fail(function(error) {
+
+                swal({
+                  title: "Oops...",
+                  text: "Deletion failed",
+                  type: "error",
+                  timer: 2000,
+                  showConfirmButton: false
+                });
+              });
+          }
+        });
+    });
+  });
+</script>
+{% endblock%}
