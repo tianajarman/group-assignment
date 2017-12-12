@@ -202,7 +202,10 @@ def get_all_movies():
     movies = [
         ['1', 'Hocus Pocus', 'Comedy', 'After three centuries, three witch sisters are resurrected in Salem, Massachusetts on Halloween night, and it is up to two teenagers, a young girl, and an immortal cat to put an end to their reign of terror once and for all.'],
         ['2', 'Horrible Bosses', 'Comedy', 'Three friends conspire to murder their awful bosses when they realize they are standing in the way of their happiness.'],
-        ['3', 'Swimfan', 'Thriller', "A high school senior with a promising swimming career has a one-night stand with consequences."]
+        ['3', 'Swimfan', 'Thriller', "A high school senior with a promising swimming career has a one-night stand with consequences."],
+        ['4', 'The Wizard of Oz', 'Science Fiction', 'An innocent farm girl whisked out of her mundane earthbound existence into a land of pure imagination.'],
+        ['5', 'Practical Magic', 'Fantasy', "Sally and Gillian Owens, born into a magical family, have mostly avoided witchcraft themselves. But when Gillian's vicious boyfriend, Jimmy Angelov, dies unexpectedly, the Owens sisters give themselves a crash course in hard magic."],
+        ['6', 'Halloween', 'Thriller', 'Fifteen years after murdering his sister on Halloween night 1963, Michael Myers escapes from a mental hospital and returns to the small town of Haddonfield to kill again.']
     ]
     return render_template('movies.html', movies=movies)
 

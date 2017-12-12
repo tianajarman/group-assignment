@@ -4,9 +4,25 @@
 Home
 {% endblock %}
 
+{% block head %}
+{{super()}}
+<style>
+  p {
+    font-size: 16px;
+  }
+
+  .mt-5 {
+    color: slateblue;
+  }
+</style>
+{% endblock %}
 {% block page_content %}
 <div class="container">
-   <h1 class="mt-5"><i class="fa fa-film" aria-hidden="true"></i> Movies </h1>
-   <p> Here lies the home page of group 6. Our site is currently under maintence and will be updated shortly </p>
+   <h1 class="mt-5"><i class="fa fa-film" aria-hidden="true"></i> Welcome to our Movie Database! </h1>
+   <p>This website contains two databases filled with the creators' favorite movies, along with the directors who filmed them.
+     You'll find that the database is user-friendly, allowing people to add and edit movies and directors as they see fit.
+     There is also a member's page with a list of the website's creators. If you want to search for movies quickly, we recommend
+     browsing through the Movie List. It's a condensed page that only shows movie titles, and will also show the synopsis of whatever
+     movie you click on. If you're looking for a more detailed view - or want to add something yourself - we recommend the Movie Directory. </p>
  </div>
 {% endblock %}
